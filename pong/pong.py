@@ -7,6 +7,7 @@ SCREEN_HEIGHT = 600
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
 running = True
+fps = 60
 
 player_pos = pygame.Vector2(screen.get_width()/2, screen.get_height()/2)
 
@@ -16,7 +17,8 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     
-    screen.fill("purple")
+    screen.fill("black")
+
 
     # RENDER GAME HERE
 
@@ -35,6 +37,9 @@ while running:
     # flip() the display to present work on screen
     pygame.display.flip()
 
-    clock.tick(60) # limits FPS to 60
+    clock.tick(fps) # limits FPS to 60
 
 pygame.quit()
+
+# VERSION 1.1
+# auto save on
