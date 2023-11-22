@@ -13,13 +13,23 @@ running = True
 
 player_pos = pygame.Vector2(screen.get_width()/2, screen.get_height()/2)
 
+def draw_walls():
+    left = pygame.draw.line(screen, 'white', (0, 0), (0, SCREEN_HEIGHT), WALL_THICKNESS)
+    right = pygame.draw.line(screen, 'white', (SCREEN_WIDTH, 0), (SCREEN_WIDTH, SCREEN_HEIGHT), WALL_THICKNESS)
+    top = pygame.draw.line(screen, 'white', (0, 0), (SCREEN_WIDTH, 0), WALL_THICKNESS)
+    bottom = pygame.draw.line(screen, 'white', (0, SCREEN_HEIGHT), (SCREEN_WIDTH, SCREEN_HEIGHT), WALL_THICKNESS)
+    wall_list = [left, right, top, bottom]
+
+    return wall_list
+
 while running:
     # pygame.QUIT event means the user clicked X to close the window
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
     
-    screen.fill("black")
+    screen.fill("purple")
+    walls = draw_walls()
 
     # RENDER GAME HERE
 
