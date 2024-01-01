@@ -62,7 +62,7 @@ def ball_collision():
 
         pygame.time.wait(200)
         
-    if ball.bottom >= SCREEN_HEIGHT or ball.top <= 0:
+    if ball.bottom > SCREEN_HEIGHT or ball.top < 0:
         BALL_SPEED_Y *= -1
     
     ## player-ball collision using obj1.colliderect(obj2)
@@ -75,13 +75,6 @@ def ball_collision():
         else:
             BALL_SPEED_X += 0.5
             BALL_SPEED_Y += 0.5
-
-def draw_walls():
-    left = pygame.draw.line(screen, 'white', (0, 0), (0, SCREEN_HEIGHT), WALL_THICKNESS)
-    right = pygame.draw.line(screen, 'white', (SCREEN_WIDTH, 0), (SCREEN_WIDTH, SCREEN_HEIGHT), WALL_THICKNESS)
-    top = pygame.draw.line(screen, 'white', (0, 0), (SCREEN_WIDTH, 0), WALL_THICKNESS)
-    bottom = pygame.draw.line(screen, 'white', (0, SCREEN_HEIGHT), (SCREEN_WIDTH, SCREEN_HEIGHT), WALL_THICKNESS)
-    wall_list = [left, right, top, bottom]
 
 def basic_movement(main_player, type):
     key = pygame.key.get_pressed()
@@ -129,8 +122,6 @@ while running:
 
     ball_collision()
 
-    draw_walls()
-
     # PLAYER_1_SCORE = SCORE_FONT.render("0", True, "white")
     # screen.blit(PLAYER_1_SCORE, (SCREEN_WIDTH/2 - 60, 40))
     # PLAYER_2_SCORE = SCORE_FONT.render("0", True, "white")
@@ -140,5 +131,4 @@ while running:
     pygame.display.flip()
 
     clock.tick(FPS) # limits FPS to 60
-
 pygame.quit()
